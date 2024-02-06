@@ -13,6 +13,13 @@ class StoreUser extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            'name' => 'required|max:255',
+            'username' => 'required|unique:users|max:255',
+            'email' => 'nullable|email|unique:users|max:255',
+            'phone_number' => 'nullable|unique:users|max:20',
+            'password' => 'required|min:6',
+            'profile_picture_url' => 'nullable|url|max:255',
+        ];
     }
 }
